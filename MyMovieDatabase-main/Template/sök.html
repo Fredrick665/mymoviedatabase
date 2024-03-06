@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Movie Search Results</title>
+    <link rel="stylesheet" href="./styles/style.css">
+    <!-- Include AOS library stylesheet in the head -->
+    <script src="https://cdn.jsdelivr.net/npm/aos@2.3.1/dist/aos.js"></script>
+</head>
+
+<body>
+    <header class="header">
+        <div class="content-wrapper header__flex">
+            <a href="index.html"><img src="./res/logo.png" alt="logotype"></a>
+            <form>
+                <input id="searchInputMain" type="text" placeholder="Search...">
+                <button type="button" class="header__form-btn" id="searchBtnMain">Search</button>
+                <button class="header__fav-btn" id="favBtn">Favorites</button>
+            </form>
+        </div>
+    </header>
+    <section class="search-results d-none">
+        <div class="content-wrapper results" id="searchResultsContainer">
+            <!-- Search results will be appended here -->
+        </div>
+    </section>
+
+    <span id="paginationInfo"></span>
+    <button type="button" id="nextPageBtn">Next Page</button>
+    <button type="button" id="prevPageBtn">Previous Page</button>
+    <button id="backToResultsBtn">Back to Results</button>
+    <a href="sök.html" id="backToSearchLink"><button id="backToSearchBtn">Back to Search</button></a>
+    <span id="totalPages"></span>
+    <span id="searchCount"></span>
+
+    <!-- Link to your JavaScript file -->
+    <script src="./scripts/Search.js"></script>
+</body>
+</html>

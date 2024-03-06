@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My Movie Database</title>
+    <link rel="stylesheet" href="./styles/style.css">
+    <script src="https://cdn.jsdelivr.net/npm/aos@2.3.1/dist/aos.js"></script>
+</head>
+<body>
+    <header class="header">
+        <div class="content-wrapper header__flex">
+            <a href="index.html"><img src="./res/logo.png" alt="logotype"></a>
+            <form action="sök.html" method="get">
+                <label for="searchInputMain" style="display: none;">Till sökfunktionen</label>
+                <input id="searchInputMain" type="text" name="search" placeholder="Till sökfunktionen" onclick="window.location.href='sök.html';">
+            </form>
+            <button class="header__fav-btn" id="favBtn">Favorites</button> 
+        </div>
+    </header>
+
+    <section class="favorites-container d-none" id="favoritesContainer">
+        <div class="content-wrapper favorites" id="favorites">
+            
+        </div>
+    </section>
+
+    <!-- Search Results d-none -->
+    <section class="search-results d-none">
+        <div class="content-wrapper results">
+            <h2 class="results__title">Search Results</h2>
+            <ul class="results__list" id="resultsList">
+            </ul>
+        </div>
+    </section>
+
+    <!-- Trailer Section -->
+    <section>
+        <div class="content-wrapper">
+            <article class="carousel" data-carousel>
+                <button class="carousel__btn prev" data-carousel-btn="prev">&#8612;</button>
+                <button class="carousel__btn next" data-carousel-btn="next">&#8614;</button>
+                <ul data-slides>
+                </ul>
+                
+            </article>
+        </div>
+    </section>
+
+    <!-- Popular movies section -->
+    <section>
+        <div class="content-wrapper popular">
+            <h2 class="popular__title">My Movie Database Top 20</h2>
+            <br>
+            <section class="popular__card-container" id="popularCardContainer">
+                <!-- Movie cards will be added dynamically using JavaScript -->
+            </section>
+        </div>
+    </section>
+    <script src="./scripts/script.js"></script>
+</body>
+</html>
