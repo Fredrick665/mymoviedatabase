@@ -26,6 +26,8 @@ body {
 .content-wrapper {
     width: 1280px;
     margin: 0 auto;
+    display: flex;
+    flex-wrap: wrap;
 }
 
 .d-none {
@@ -38,7 +40,7 @@ body {
     background-color: var(--header-grey);
     width: 100%;
     padding: 1.5rem;
-    z-index: 999;
+    z-index: 1;
 }
 
 .header__flex {
@@ -64,6 +66,7 @@ body {
     border-radius: 2rem 0 0 2rem;
     border: none;
     transition: background-color 0.3s;
+    background-color:
 }
 
 .header input:hover {
@@ -144,19 +147,20 @@ body {
 
 #searchResultsContainer {
     display: grid;
-    grid-template-columns: repeat(5, 1fr); /* 5 resultat per rad */
-    grid-template-rows: repeat(2, auto); /* 2 rader */
+    grid-template-columns: repeat(5, 1fr); 
+    grid-template-rows: repeat(2, auto); 
     gap: 20px;
     height: auto;
     object-fit: contain;
     max-width: 100%;
-    max-height: var(--max-image-height);
+    min-height: 50vh
 }
 
 .popular__title {
     font-size: 24px;
     color: var(--text-yellow);
     margin-top: 20px;
+    margin-left: 500px;
     text-align: center;
 }
 
@@ -254,15 +258,68 @@ body {
     color: var(--text-yellow);
 }
 
-.movie-title {
-    display: block;
-    position: absolute;
-    bottom: 0;
-    width: 100%;
-    background-color: rgba(255, 255, 255, 0.8);
-    padding: 10px;
-    transform: translateY(0);
-    transition: transform 0.8s ease;
+#totalPages,
+#searchCount {
+    background-color: var(--text-yellow);
+    color: var(--primary-black);
+    padding: 10px 20px;
+    border-radius: 5px;
+    margin-right: 10px;
+    display: inline-block;
+    transition: background-color 0.3s, color 0.3s;
+}
+
+#totalPages:hover,
+#searchCount:hover {
+    background-color: var(--primary-black);
+    color: var(--text-yellow);
+}
+
+
+#totalPages:empty,
+#searchCount:empty {
+    display: none;
+}
+
+#totalPages:not(:empty),
+#searchCount:not(:empty) {
+    display: inline-block;
+}
+
+#backToSearchBtn {
+    background-color: var(--text-yellow);
+    color: var(--primary-black);
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    margin-right: 10px;
+    transition: background-color 0.3s, color 0.3s;
+}
+
+#backToSearchBtn:hover {
+    background-color: var(--primary-black);
+    color: var(--text-yellow);
+}
+.movie-link {
+    position: relative;
+    display: inline-block;
+    overflow: hidden;
+    transition: background-color 0.3s ease-in-out;
+}
+
+.movie-link:hover {
+    background-color: #333;
+}
+
+.movie-link:hover .movie-details-content {
+    color: var(--hover-color);
+    transition: color 0.3s ease-in-out;
+}
+
+.movie-link:hover .movie-details-content img {
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+    transition: box-shadow 0.3s ease-in-out;
 }
 
 .movie-details-content {
@@ -275,6 +332,7 @@ body {
 .movie-details-content img {
     max-width: 30%;
     margin-right: 20px;
+    transition: transform 0.3s ease-in-out;
 }
 
 .movie-details-content .movie-details {
@@ -285,75 +343,66 @@ body {
     margin: 0;
     margin-bottom: 10px;
 }
+
+
 .popular__card-container {
     display: grid;
-    grid-template-columns: repeat(5, 1fr); 
-    grid-template-rows: repeat(2, auto); 
+    grid-template-columns: repeat(5, 1fr);
+    grid-template-rows: repeat(2, auto);
     gap: 20px;
 }
 
 .popular__card {
-    width: 100%;
-    text-align: center;
-    margin: 0;
-    color: #fff;
-    overflow: hidden; 
-}
-
-.popular__card img {
-    width: 100%;
-    height: 100%;
-    object-fit: contain; 
-    transition: transform 0.8s ease, opacity 0.8s ease;
-    max-width: 100%;
-    max-height: var(--max-image-height);
-}
-.search-result-item img, .popular__card img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-}
-
-.popular__card h3 {
-    margin-top: 10px;
-    font-size: 16px;
-}
-
-.popular__card p {
-    font-size: 14px;
-}
-
-.popular__card:hover img {
-    transform: scale(1.1) rotate(5deg); 
-}
-
-.popular__card:hover {
-    color: #ff4081; 
-}
-
-.popular__card .overlay {
+    position: relative;
+    overflow: hidden;
+    transition: transform 0.5s cubic-bezier(0.68, -0.55, 0.27, 1.55), box-shadow 0.3s ease-in-out;
+  }
+  
+  .popular__card::before {
+    content: '';
     position: absolute;
     top: 0;
     left: 0;
     width: 100%;
     height: 100%;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    opacity: 0;
-    background: rgba(0, 0, 0, 0.7);
-    transition: opacity 0.3s ease;
-}
+    background: linear-gradient(135deg, #001529, #1890ff, #001529);
+    opacity: 0.9;
+    mix-blend-mode: overlay;
+    transform: scale(1.2);
+    transition: transform 0.5s cubic-bezier(0.68, -0.55, 0.27, 1.55), opacity 0.3s ease-in-out;
+  }
+  
+  .popular__card:hover {
+    transform: scale(1.05);
+    box-shadow: 0 0 20px rgba(24, 144, 255, 0.8);
+  }
+  
+  .popular__card h3 {
+    color: #fff;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+    transition: color 0.3s ease-in-out;
+  }
+  
+  .popular__card:hover h3 {
+    color: #FFD700;
+  }
+  
+  .popular__card img {
+    width: 100%;
+    height: 100%;
+  }
+  
+  .popular__card:hover::before {
+    opacity: 0.7;
+    transform: scale(1);
+  }
 
-.popular__card:hover .overlay {
-    opacity: 1;
-}
 
 /* Media Queries */
 @media screen and (max-width: 1380px) {
     .content-wrapper {
         overflow: hidden;
+        width: 95%;
     }
     #searchResultsContainer{
         overflow: hidden;
@@ -362,12 +411,18 @@ body {
         height: auto;
         object-fit: contain;
         max-width: 100%;
-        max-height: var(--max-image-height);
+        min-height: 50vh
     }
     .popular__card-container {
         display: grid;
         grid-template-columns: repeat(4, 3fr);
         overflow: hidden;
+    }
+    .header__flex {
+        width: 95%;
+    }
+    .content-wrapper-popular{
+        text-align: center;
     }
 }
 
@@ -382,12 +437,15 @@ body {
         height: auto;
         object-fit: contain;
         max-width: 100%;
-        max-height: var(--max-image-height);
+        min-height: 50vh
     }
     .popular__card-container {
         display: grid;
         grid-template-columns: repeat(2, 5fr);
         overflow: hidden;
+    }
+    .content-wrapper-popular{
+        text-align: center;
     }
 }
 
@@ -402,11 +460,14 @@ body {
         height: auto;
         object-fit: contain;
         max-width: 100%;
-        max-height: var(--max-image-height);
+        min-height: 50vh
     }
     .popular__card-container {
         display: grid;
         grid-template-columns: repeat(1, 10fr);
         overflow: hidden;
     }
-}
+    .content-wrapper-popular{
+        text-align: center;
+    }
+    }

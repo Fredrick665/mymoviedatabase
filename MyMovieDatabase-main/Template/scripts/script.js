@@ -31,6 +31,8 @@ window.addEventListener('load', () => {
     }
 });
 
+
+
 function renderMovies(movieData) {
     // Gör något med movieData här
     console.log('Rendering movies:', movieData);
@@ -57,8 +59,7 @@ function renderSingleMovie(movie) {
             ${movie.genre ? `<p>Genre: ${movie.genre}</p>` : ''}
             <p>Plot: ${movie.plot}</p>
             ${movie.imdbRating ? `<p>IMDb Rating: ${movie.imdbRating}</p>` : ''}
-            ${movie.runtime ? `<p>Runtime: ${movie.runtime} min</p>` : ''}
-            
+            ${movie.runtime ? `<p>Runtime: ${movie.runtime} min</p>` : ''}  
         </div>
     `;
     console.log(movie);
@@ -185,11 +186,12 @@ async function populateMovieData(callback) {
 
             // Lägg till bild och titel
             movieCard.innerHTML = `
-                <a href="movie.html?imdbid=${movie.imdbid}">
-                    <img src="${movie.poster}" alt="${movie.title}" class="movie-poster">
-                    <h3>${movie.title}</h3>
-                </a>
-            `;
+            <a href="movie.html?imdbid=${movie.imdbid}" class="movie-link">
+                <img src="${movie.poster}" alt="${movie.title}" class="movie-poster">
+                <h3 class="popular__card h3">${movie.title}</h3>
+            </a>
+        `;
+        
 
             // Lägg till movieCard i popularCardContainer om det finns
             if (popularCardContainer && movieCard) {

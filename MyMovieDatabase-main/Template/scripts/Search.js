@@ -93,12 +93,6 @@ document.addEventListener("DOMContentLoaded", (function () {
                 var movieElement = createMovieElement(movie);
 
                 searchResultsContainer.appendChild(movieElement);
-
-                if ((index + 1) % resultsPerPage === 0) {
-                    var clearElement = document.createElement("div");
-                    clearElement.style.clear = "both";
-                    searchResultsContainer.appendChild(clearElement);
-                }
             });
           
 
@@ -174,3 +168,4 @@ document.addEventListener("DOMContentLoaded", (function () {
         anchorPlacement: "top-center",
         offset: 100
     });
+    
